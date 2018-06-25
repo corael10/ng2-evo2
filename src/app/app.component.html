@@ -1,20 +1,361 @@
-<!--The whole content below can be removed with the new code.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo=" />
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" href="https://angular.io/docs/ts/latest/tutorial/">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="http://angularjs.blogspot.ca/">Angular blog</a></h2>
-  </li>
-</ul>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
+    <title>Sidebar template</title>
+
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+    <div class="page-wrapper chiller-theme toggled">
+        <nav id="sidebar" class="sidebar-wrapper">
+            <div class="sidebar-content">
+                <div id="toggle-sidebar">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="sidebar-brand">
+                    <img class="img-responsive" type="image/x-icon" rel="shortcut icon" src="assets/images/EVOLOGO_morado.png" alt="Sensaq"
+                        style="height:auto;margin-top:5px" />
+                </div>
+                <div class="sidebar-header">
+                    <div class="user-pic">
+
+                        <img class="img-responsive img-rounded" src="assets/users/{{username}}.jpg" onError="this.src='assets/users/user_default2.jpeg';"
+                            alt="...">
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">{{first_name}}
+                            <strong>{{last_name}}</strong>
+                        </span>
+                        <span *ngIf="is_superuser == 'true'" class="user-role">Administrator</span>
+                        <span class="user-status">
+                            <i class="fa fa-circle"></i>
+                            <span>Online</span>
+                        </span>
+                    </div>
+                </div>
+                <!-- sidebar-header  
+                <div class="sidebar-search">
+                    <div>
+                        <div class="input-group">
+                            <input type="text" class="form-control search-menu" placeholder="Search...">
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+                <!-- sidebar-search  -->
+                <div class="sidebar-menu">
+                    <ul>
+                        <li class="header-menu">
+                            <span>General</span>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:;" data-toggle="collapse" data-target="#productos">
+                                <i class="fa fa-fw fa fa-group"></i>
+                                <span>Productos</span>
+                                <!--<span class="badge badge-pill badge-danger">New</span>-->
+                            </a>
+                            <ul id="productos" class="collapse">
+                                <li>
+                                    <a routerLink="grafica-productos">
+                                        <i class="fa fa-fw 	fa fa-area-chart"></i>Estadisticas</a>
+                                </li>
+                                <li>
+                                    <a routerLink="productos">
+                                        <i class="fa fa-fw 	fa fa-bullseye"></i>Productos</a>
+                                </li>
+                                <li>
+                                    <a routerLink="marcas">
+                                        <i class="fa fa-fw 	fa fa-bullseye"></i>Marcas</a>
+                                </li>
+                                <li>
+                                    <a routerLink="productos-promo">
+                                        <i class="fa fa-fw 	fa fa-bullseye"></i>Promos</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:;" data-toggle="collapse" data-target="#clientes">
+                                <i class="fa fa-fw fa fa-group"></i>
+                                <span>Clientes</span>
+                                <!--<span class="badge badge-pill badge-danger">New</span>-->
+                            </a>
+                            <ul id="clientes" class="collapse">
+                                <li>
+                                    <a routerLink="grafica-clientes">
+                                        <i class="fa fa-fw 	fa fa-area-chart"></i>Estadisticas</a>
+                                </li>
+                                <li>
+                                    <a routerLink="clientes">
+                                        <i class="fa fa-fw 	fa fa-bullseye"></i>Clientes</a>
+                                </li>
+                                <li>
+                                    <a routerLink="pedidos">
+                                        <i class="fa fa-fw 	fa fa-bullseye"></i>Notas de Venta</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:;" data-toggle="collapse" data-target="#empleados">
+                                <i class="fa fa-fw fa fa-child"></i>
+                                <span>Agentes de Ventas</span>
+                                <!--<span class="badge badge-pill badge-danger">New</span>-->
+                            </a>
+                            <ul id="empleados" class="collapse">
+                                <li>
+                                    <a routerLink="grafica-empleados">
+                                        <i class="fa fa-fw 	fa fa-area-chart"></i>Estadisticas</a>
+                                </li>
+                                <li>
+                                    <a routerLink="empleados">
+                                        <i class="fa fa-fw 	fa fa-bullseye"></i>Agentes de Venta</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:;" data-toggle="collapse" data-target="#inventario">
+                                <i class="fa fa-fw fa fa-child"></i>
+                                <span>Inventarios</span>
+                                <!--<span class="badge badge-pill badge-danger">New</span>-->
+                            </a>
+                            <ul id="inventario" class="collapse">
+                                <li>
+                                    <a routerLink="inventarios">
+                                        <i class="fa fa-fw 	fa fa-bullseye"></i>Registro de Inventarios</a>
+                                </li>
+                                <li>
+                                    <a routerLink="lista-prod-inventario">
+                                        <i class="fa fa-fw 	fa fa-bullseye"></i>Inventario</a>
+                                </li>
+                                <li>
+                                    <a routerLink="inventario-nuevo">
+                                        <i class="fa fa-fw 	fa fa-bullseye"></i>Nuevo</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:;" data-toggle="collapse" data-target="#proveedor">
+                                <i class="fa fa-fw fa fa-truck"></i>
+                                <span>Proveedores</span>
+                                <!--<span class="badge badge-pill badge-danger">New</span>-->
+                            </a>
+                            <ul id="proveedor" class="collapse">
+                                <li>
+                                    <a routerLink="grafica-proveedores">
+                                        <i class="fa fa-fw 	fa fa-area-chart"></i>Estadisticas</a>
+                                </li>
+                                <li>
+                                    <a routerLink="proveedores">
+                                        <i class="fa fa-fw 	fa fa-bullseye"></i>Proveedores</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="javascript:;" data-toggle="collapse" data-target="#admin">
+                                <i class="fa fa-fw fa fa-cogs"></i>
+                                <span>Herramientas de admin</span>
+                                <!--<span class="badge badge-pill badge-danger">New</span>-->
+                            </a>
+                            <ul id="admin" class="collapse">
+                                <li>
+                                    <a routerLink="projects">
+                                        <i class="fa fa-fw 	fa fa-bullseye"></i>Projects</a>
+                                </li>
+                                <li>
+                                    <a routerLink="users">
+                                        <i class="fa fa-fw fa-user"></i> Users</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!--
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>E-commerce</span>
+                                <span class="badge badge-pill badge-primary">3</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="#">Products
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Orders</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Credit cart</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="far fa-gem"></i>
+                                <span>Components</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="#">General</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Panels</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Tables</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Icons</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Forms</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-chart-line"></i>
+                                <span>Charts</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="#">Pie chart</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Line chart</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Bar chart</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Histogram</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-globe"></i>
+                                <span>Maps</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="#">Google maps</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Open street map</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="header-menu">
+                            <span>Extra</span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-calendar"></i>
+                                <span>Calendar</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-folder"></i>
+                                <span>Examples</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-book"></i>
+                                <span>Documentation</span>
+                            </a>
+                        </li>
+                        -->
+                    </ul>
+                </div>
+                <!-- sidebar-menu  -->
+            </div>
+            <!-- sidebar-content  -->
+            <div class="sidebar-footer">
+                <a (click)='muestrMensajes()'>
+                    <i class="fa fa-envelope"></i>
+                    <span *ngIf='numeroMensajes > 0' class="badge badge-success notification">{{numeroMensajes}}</span>
+                </a>
+                <!--<a href="#">
+                    <i class="fa fa-envelope"></i>
+                    <span class="badge badge-pill badge-success notification">7</span>
+                </a>-->
+                
+                    <a data-toggle="dropdown">
+                        <i class="fa fa-cog"></i>
+                        <span class="badge-sonar"></span>
+                    </a>
+                    <ul class="dropdown-menu drop-up" role="menu">
+                        <li>
+                            <a (click)="CambioPassword()">Cambiar Password</a>
+                        </li>
+                    </ul>
+                
+
+                <a (click)="logout()">
+                    <i class="fa fa-power-off"></i>
+                </a>
+            </div>
+        </nav>
+        <!-- sidebar-wrapper  -->
+        <main class="page-content">
+
+            <router-outlet></router-outlet>
+
+
+        </main>
+        <!-- page-content" -->
+    </div>
+    <!-- page-wrapper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+</body>
+
+<mensajes id="mensajes" [mensajes]='mensajes' [numeroMensajes]='numeroMensajes' style="display: none;"></mensajes>
+
+</html>
+
+<div class="container">
+    <modal #modal>
+        <modal-header [show-close]="true">
+            <h4 class="modal-title">Cambio de Password</h4>
+        </modal-header>
+        <modal-body>
+            <cambio-password (onsubmit)="guardarpassword($event)" [error]="error" [model]="model"></cambio-password>
+        </modal-body>
+        <modal-footer>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="modal.dismiss()">Cerrar</button>
+        </modal-footer>
+    </modal>
+</div>

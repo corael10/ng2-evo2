@@ -1,0 +1,45 @@
+#login-bg {
+    min-height: 500px;
+    background-color: #f5f5f5;
+}
+
+#login-bg-top {
+    background-image: url('https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/7325VFAGUL.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    height: 130px;
+    display: block;
+    text-align: center;
+}
+
+#login-bg-top h3 {
+    color: #101010;
+}
+
+.logo-circle {
+    background-image: url('https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/KWFGTSNZBS.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 125px;
+    width: 150px;
+    height: 150px;
+    margin-top: 50px;
+    display: inline-block;
+    border: 5px solid rgba(211,211,211,0.9);
+}
+
+.bg-content {
+    text-align: center;
+    padding-top: 50px;
+    padding-left: 110px;
+    padding-right: 110px;
+    margin-top: 40px;
+    margin-bottom: 90px;
+    background-color: #FFF;
+    min-height: 300px;
+}
+
+.input-group {
+    width: 100%;
+}

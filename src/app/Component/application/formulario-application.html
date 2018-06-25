@@ -1,0 +1,71 @@
+<div class="container">
+    <modal #modalversionapp>
+        <modal-header [show-close]="true">
+            <h4 class="modal-title">New Version</h4>
+        </modal-header>
+        <modal-body>
+            <formulario-versionapp (onsubmit)="guardarVersionapp($event)" [model]="version"></formulario-versionapp>
+        </modal-body>
+        <modal-footer>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="modal.dismiss()">Cerrar</button>
+        </modal-footer>
+    </modal>
+</div>
+
+
+<div class="text-center">
+    <h1 class="nice">Add Application</h1>
+</div>
+
+<form method="POST" data-toggle="validator" class="form-horizontal" (ngSubmit)="submit()" #listaApplicationForm="ngForm">
+    <!-- Text input-->
+
+
+    <div class="row form-group">
+        <label class="col-md-4 control-label" for="version">Version</label>
+        <div class="col-md-2">
+            <select name="version" id="version" [(ngModel)]="model.version">
+                <option></option>
+                <option *ngFor="let option of versionsapps" [value]="option.id" [selected]="option == model.version ? true : false" readonly>{{option.version}}</option>
+            </select>
+        </div>
+        <div class="col-md-4" class="white-bg">
+            <button class="btn button-default custom-button" (click)="addVersionApp();">New Version</button>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="name">App Id</label>
+
+        <div class="col-md-4">
+            <input id="userid" name="userid" type="text" placeholder="App Id" class="form-control input-md" [(ngModel)]="model.app_id"
+                #Appid="ngModel">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="name">Name</label>
+
+        <div class="col-md-4">
+            <input id="name" name="name" type="text" placeholder="name" class="form-control input-md" [(ngModel)]="model.name" #name="ngModel">
+
+        </div>
+    </div>
+    <!--*ngIf=''-->
+
+
+
+
+    <div class="form-group" *ngIf="!listaApplicationForm.valid">
+        <span class="col-md-8 control-label">Check the data to be able to save</span>
+    </div>
+    <!-- Button (Double) -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="button1id"></label>
+
+        <div class="col-md-8">
+            <button type="submit" (click)="submitApp();" class="btn btn-primary" [disabled]="!listaApplicationForm.valid">Guardar</button>
+
+        </div>
+    </div>
+</form>

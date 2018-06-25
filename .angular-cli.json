@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "project002"
+    "name": "projectONO"
   },
   "apps": [
     {
@@ -9,7 +9,9 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "assets/users",
+        "assets/images"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -19,9 +21,27 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "../node_modules/tether/dist/css/tether.min.css",        
+        "../build/css/custom.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.css",
+        "../src/styles/css/modalStyle.css",
+        "../src/styles/css/custom.css",
+        "../src/styles/css/sb-admin.css",
+        "../src/styles/font-awesome/css/font-awesome.min.css",
+        "../node_modules/datatables.net-dt/css/jquery.dataTables.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/pdfmake/build/pdfmake.min.js",
+        "../node_modules/pdfmake/build/vfs_fonts.js",
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/tether/dist/js/tether.min.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+        "../node_modules/bootstrap-validator/dist/validator.min.js",
+        "../node_modules/datatables.net/DataTables-1.10.16/js/jquery.dataTables.js",
+        "../node_modules/ng2-bs3-modal/bundles/ng2-bs3-modal.js"
+        
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

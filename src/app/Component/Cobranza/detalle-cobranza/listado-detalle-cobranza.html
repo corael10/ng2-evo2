@@ -1,0 +1,56 @@
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Detalles de Cliente pedidos : <b> {{source.data[0]?.folio |uppercase}}</b></h2>               
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="col-sm-1">
+                                <label>ID Cliente</label>
+                                <p id="idcliente" name="idcliente" style='text-transform:uppercase' type="text" placeholder="Folio" class="form-control input-md" ><b> {{source.data[0]?.pedido_entrada?.cliente?.id}}</b></p>
+                            </div>
+                            <div class="col-sm-3">
+                                    <label>Nombre Cliente</label>
+                                    <p id="cliente" name="cliente" style='text-transform:uppercase' type="text" placeholder="Folio" class="form-control input-md" ><b> {{source.data[0]?.pedido_entrada?.cliente?.nombre}} {{source.data[0]?.pedido_entrada?.cliente?.apellido}}</b></p>
+                                </div>
+                            <div class="col-sm-2">
+                                <label>Fecha</label>
+                                <p id="fecha" name="fecha"  placeholder="Fecha" class="form-control input-md"><b>{{source.data[0]?.pedido_entrada?.fecha}}</b></p>
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="proveedor">Agente de Venta</label>
+                                <p id="proveedor" name="proveedor"  placeholder="Proveedor" class="form-control input-md" ><b>{{source.data[0]?.pedido_entrada?.empleado?.nombre}} {{source.data[0]?.pedido_entrada?.empleado?.apellido}}</b></p>
+                            </div>
+
+                            <div class="col-sm-2">
+                                    <label for="proveedor">Saldo</label>
+                                    <p id="saldo" name="saldo"  placeholder="Saldo" class="form-control input-md" ><b>${{source.data[0]?.pedido_entrada?.cliente?.saldo}}</b></p>
+                                </div>
+                            
+                            
+                        </div>
+                    </div>                
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-body">
+            <ng2-smart-table class="tamano" [settings]="settings" [source]="source" (editConfirm)="onSaveConfirm($event)" (deleteConfirm)="onDeleteConfirm($event)"
+                (createConfirm)="onCreateConfirm($event)" (custom)="onCustom($event)">
+            </ng2-smart-table>
+        </div>
+        </div>
+        <div class="row">
+                <div class="col-xs-12">
+                        <div class="col-sm-11">
+                                
+                                <h3><p align="right"  ><b>Total: </b></p></h3>
+                            </div>
+                            <div class="col-md-offset-11">                                
+                            <h3>  <p ><b>{{total}}</b></p></h3>
+                            </div>
+                </div>
+        </div>
+    </div>
+</div>

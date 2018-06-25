@@ -1,0 +1,162 @@
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <my-header></my-header>
+        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            
+            <ul class="nav navbar-nav side-nav" id="accordion">
+                 <!-- menu profile quick info -->
+            <div class="profile clearfix">
+                    <div class="profile_pic"> 
+                      <img src="assets/users/{{username}}.jpg" onError="this.src='assets/users/user_default2.jpeg';" alt="..." class="img-circle profile_img">
+                    </div>
+                    <div class="profile_info">
+                      <span>Welcome,</span> 
+                      <h2>{{first_name}} {{last_name}}</h2>
+                    </div>
+                  </div>
+                  <!-- /menu profile quick info -->
+      
+                  <br />
+                    <!--<li *ngFor="let item of projects; let i = index" >
+                            <a href="#project-{{i}}" data-toggle="collapse" data-parent="#accordion">
+                                <i class="fa fa-fw fa-arrows-v"></i> {{item.project.name}}
+                                <i class="fa fa-fw fa-caret-down"></i>
+                            </a> 
+                            <ul  id="project-{{i}}" class="collapse">
+                                <li *ngFor="let item2 of item.subprojects">
+                                    <a routerLink="Daily-Preotn">
+                                        <i class="fa fa-fw 	fa fa-bullseye">{{item2.name}} </i>sad</a>
+                                </li>
+                                
+        
+                            </ul>
+                        </li>-->
+                        
+                        <li>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#productos">
+                                <i class="fa fa-fw fa fa-cubes"></i> Productos
+                                <i class="fa fa-fw fa-caret-down"></i>
+                            </a>
+                            <ul id="productos" class="collapse">
+                                <li>
+                                    <a routerLink="grafica-productos">
+                                        <i class="fa fa-fw 	fa fa-area-chart"></i>Estadisticas</a>
+                                </li>
+                                <li>
+                                    <a routerLink="productos">
+                                        <i class="fa fa-fw 	fa fa-bullseye"></i>Productos</a>
+                                </li>
+                                <li>
+                                    <a routerLink="marcas">
+                                        <i class="fa fa-fw 	fa fa-bullseye"></i>Marcas</a>
+                                </li>
+                                <li>
+                                    <a routerLink="productos-promo">
+                                        <i class="fa fa-fw 	fa fa-bullseye"></i>Promos</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                <li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#clientes">
+                        <i class="fa fa-fw fa fa-group"></i> Clientes
+                        <i class="fa fa-fw fa-caret-down"></i>
+                    </a>
+                    <ul id="clientes" class="collapse">
+                        <li>
+                            <a routerLink="grafica-clientes">
+                                <i class="fa fa-fw 	fa fa-area-chart"></i>Estadisticas</a>
+                        </li>
+                        <li>
+                            <a routerLink="clientes">
+                                <i class="fa fa-fw 	fa fa-bullseye"></i>Clientes</a>
+                        </li>
+                        <li>
+                                <a routerLink="pedidos">
+                                    <i class="fa fa-fw 	fa fa-bullseye"></i>Pedidos</a>
+                            </li>
+                    </ul>
+                </li> 
+                <li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#empleados">
+                        <i class="fa fa-fw fa fa-child"></i> Agentes de Ventas
+                        <i class="fa fa-fw fa-caret-down"></i>
+                    </a>
+                    <ul id="empleados" class="collapse">
+                        <li>
+                            <a routerLink="grafica-empleados">
+                                <i class="fa fa-fw 	fa fa-area-chart"></i>Estadisticas</a>
+                        </li>
+                        <li>
+                            <a routerLink="empleados">
+                                <i class="fa fa-fw 	fa fa-bullseye"></i>Agentes de Venta</a>
+                        </li>
+                    </ul>
+                </li>
+               
+                <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#inventario">
+                            <i class="fa fa-fw fa fa-archive"></i> Inventarios
+                            <i class="fa fa-fw fa-caret-down"></i>
+                        </a>
+                        <ul id="inventario" class="collapse">
+                        <li>
+                                <a routerLink="inventarios">
+                                    <i class="fa fa-fw 	fa fa-bullseye"></i>Registro de Inventarios</a>
+                            </li>
+                        <li>
+                            <a routerLink="lista-prod-inventario">
+                                <i class="fa fa-fw 	fa fa-bullseye"></i>Inventario</a>
+                        </li>
+                        <li>
+                            <a routerLink="inventario-nuevo">
+                                <i class="fa fa-fw 	fa fa-bullseye"></i>Nuevo</a>
+                        </li>
+                    </ul>
+                </li> 
+                <li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#proveedor">
+                        <i class="fa fa-fw fa fa-truck"></i> Proveedores
+                        <i class="fa fa-fw fa-caret-down"></i>
+                    </a>
+                    <ul id="proveedor" class="collapse">
+                        <li>
+                            <a routerLink="grafica-proveedores">
+                                <i class="fa fa-fw 	fa fa-area-chart"></i>Estadisticas</a>
+                        </li>
+                        <li>
+                            <a routerLink="proveedores">
+                                <i class="fa fa-fw 	fa fa-bullseye"></i>Proveedores</a>
+                        </li>
+                </ul>
+            </li> 
+                <li *ngIf="is_superuser == 'true'">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#admin">
+                            <i class="fa fa-fw fa fa-cogs"></i> Admin-Tools
+                            <i class="fa fa-fw fa-caret-down"></i>
+                        </a>
+                        <ul id="admin" class="collapse">
+                            <li>
+                                <a routerLink="projects">
+                                    <i class="fa fa-fw 	fa fa-bullseye"></i>Projects</a>
+                            </li>
+                            <li>
+                                <a routerLink="users">
+                                    <i class="fa fa-fw fa-user"></i> Users</a>
+                            </li>
+                        </ul>
+                    </li>
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+</div>

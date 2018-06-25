@@ -1,0 +1,22 @@
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-md-1">
+          <h4>Marcas</h4>
+        </div>
+    </div>
+    </div>
+    <div class="panel-body">
+
+      <div class="row">
+      <div class="col-md-6">
+        <listado-marcas (marcaID)="showmarca($event)" ></listado-marcas>
+      </div>
+    </div>
+    <div class="row">
+      <div *ngIf="IDmarca != 0" id="familias"  class="col-md-10">
+        <listado-familias [IDmarca]="IDmarca"></listado-familias>
+      </div>
+      </div>
+    </div>
+  </div>

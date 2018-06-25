@@ -1,0 +1,169 @@
+<popup #popup class="overlay">
+  {{msg|uppercase}}
+</popup>
+<div id="divpop" class="modal in" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Are you sure???</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete (this)?</p>
+        <div class="row">
+          <div class="col-12-xs text-center">
+            <button class="btn btn-success btn-md" (click)="confirmdelete()">Yes</button>
+            <button class="btn btn-danger btn-md" (click)="closemodal()">No</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<div id="page-wrapper">
+  <div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 *ngIf="familiasConpromo == ''">No hay Promociones</h2>
+        <h2 *ngIf="familiasConpromo != ''">Promocion Activas en
+          <b> {{familiasConpromo.length}} </b> Familias </h2>
+        <form method="POST" (ngSubmit)="submit()" role="form">
+          <div *ngIf="familiasConpromo == '' || nuevapromo" class="panel panel-default">
+            <div class="panel-body">
+              
+              <div class="col-sm-2">
+                <label for="proveedor">Proveedor</label>
+                <select class="form-control" name="proveedor" id="proveedor" [(ngModel)]="model.proveedor" (change)="onProveedor($event)">
+                  <option></option>
+                  <option *ngFor="let option of proveedores" [value]="option.id" [selected]="option == model.proveedor ? true : false" readonly>{{option.nombre}}</option>
+                </select>
+              </div>
+              <div id="marcas" style="display: none;" class="col-sm-2">
+                <label for="marcas">Marca</label>
+                <select class="form-control" name="marcas" id="marcas" (change)="onMarca($event.target.value)">
+                  <option></option>
+                  <option *ngFor="let option of marcas" [value]="option.id" readonly>{{option.nombre}}</option>
+                </select>
+              </div>
+              <div id="familias" style="display: none;" class="col-sm-2">
+                <label for="familias">Familia</label>
+                <select class="form-control" name="familias" id="familias" (change)="onFamilia($event.target.value)">
+                  <option></option>
+                  <option *ngFor="let option of familias" [value]="option.id" readonly>{{option.nombre}}</option>
+                </select>
+              </div>
+              <div id="btnquitarpromo2" class="form-group" style="display: none;" class="col-sm-2">
+                  <label for="familias"></label><br>
+                <button type="button" class="btn btn-danger" (click)="QuitarPromo(productos[0].familia)">Quitar Promo</button>
+              </div>
+              <div id="btnAgregarpromo" class="form-group"  class="col-sm-2">
+                  <label for="agregarpromo"></label><br>
+                <button type="button" class="btn btn-primary" (click)="AgregarPromo()">Agregar Promo</button>
+              </div>
+              <div *ngIf="familiasConpromo != ''" id="btnVerpromos" class="form-group"  class="col-sm-1">
+                  <label for="verpromos"></label><br>
+                <button type="button" class="btn btn-primary" (click)="VerPromos()">Ver Promos</button>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="familiasConpromo != '' && !nuevapromo" class="panel panel-default">
+            <div class="panel-body">
+              <div id="familias" class="col-sm-3">
+                <label for="familias">Familias con Promocion</label>
+                <select class="form-control" name="familias" id="familias" (change)="onFamilia($event.target.value)">
+                  <option></option>
+                  <option *ngFor="let option of familiasConpromo" [value]="option.id" readonly>{{option.nombre}}</option>
+                </select>
+              </div>
+              <div id="btnquitarpromo" class="form-group" style="display: none;" class="col-sm-2">
+                  <label for="familias"></label><br>
+                <button type="button" class="btn btn-danger" (click)="QuitarPromo(productos[0].familia)">Quitar Promo</button>
+              </div>
+              <div id="btnAgregarpromo" class="form-group"  class="col-sm-2">
+                  <label for="agregarpromo"></label><br>
+                <button type="button" class="btn btn-primary" (click)="AgregarPromo()">Agregar Promo</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="productos_lista" style="display: none;" class="row">
+            <div class="col-xs-12">
+              <div class="row">
+                <div class="col-md-3">
+                  <h2>Lista :
+                    <b>{{familia}}</b>
+                  </h2>
+                </div>
+
+              </div>
+              <div class="row">
+                <form role="form">
+                  <div class="form-group">
+                    <table class="table table-striped">
+                      <tr>
+                        <th></th>
+                        <th>Codigo</th>
+                        <th>Nombre</th>
+                        <th>Precio Estetica</th>
+                        <th>Precio Publico</th>
+                        <th>Precio Taller</th>
+                        <th>Precio Promo</th>
+                        <th></th>
+
+
+                      </tr>
+                      <tr *ngFor="let item of productos; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>
+                          {{item.codigo}}
+                        </td>
+                        <td>
+                          {{item.nombre}}
+                        </td>
+                        <td>
+                          ${{item.precio_1}}
+                        </td>
+                        <td>
+                          ${{item.precio_2}}
+                        </td>
+                        <td>
+                          ${{item.precio_3}}
+                        </td>
+                        <!--<td>
+                        ${{item.precio_promo}}
+                     </td>-->
+                        <td class="col-sm-1">
+                          <input id="precioPromo{{i}}" name="precioPromo" type="number" placeholder="#" class="form-control input-md" required="" value="{{item.precio_promo}}">
+                        </td>
+                        <td>
+                          <button type="button" class="btn btn-primary" (click)="AgregarPrecioPromo(item,i)">
+                            <i class="glyphicon glyphicon-plus"></i>
+                          </button>
+                        </td>
+
+                      </tr>
+                    </table>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+
+
+
+  </div>
+  <!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->

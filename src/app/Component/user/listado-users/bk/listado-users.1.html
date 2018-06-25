@@ -1,0 +1,29 @@
+<!--
+Bootstrap Line Tabs by @keenthemes
+A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
+Licensed under MIT
+-->
+
+<div class="container content">
+    <div class="heading">
+        <h2>Our <strong>Great Team</strong></h2>
+        <p>Allowed Users in OnO Project</p>
+    </div><!-- //end heading -->
+
+	<div class="row">
+	<div *ngFor="let item of users; let i = index" >
+        <div class="col-sm-3">
+            <div class="team-members">
+                <div class="team-avatar">
+                    <img class="img-responsive" src="assets/{{item.username}}.jpg" alt="User"> 
+                </div>
+                <div class="team-desc">
+                    <h4>{{item.first_name}}</h4>
+                    <span>{{item.username}}</span>
+                </div>
+            </div>
+		</div>
+		</div>
+      
+    </div><!-- //end row -->
+</div>

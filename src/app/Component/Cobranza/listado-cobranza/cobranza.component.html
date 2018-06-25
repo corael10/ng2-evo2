@@ -1,0 +1,32 @@
+  
+    <div class="container">
+        <modal #modal>
+            <modal-header [show-close]="true">
+              <h4 class="modal-title">Cobranza</h4>
+            </modal-header>
+            <modal-body >
+              <formulario-cobranza (onsubmit)="guardar($event)" [model]="cobranza"></formulario-cobranza>
+            </modal-body>
+            <modal-footer>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="modal.dismiss()">Cerrar</button>
+            </modal-footer>
+          </modal>
+        </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-md-3">
+          <h4>Cobranza</h4>
+        </div>
+        <div class="col-md-offset-11">
+          <button type="button" title="Nuevo Abono" class="btn btn-warning btn-lg" (click)="addCobranza()">
+            <i class="glyphicon glyphicon-copy"></i></button> 
+        </div>
+      </div>
+    </div>
+    <div *ngIf="bandera" class="panel-body">
+      <div class="col-md-12">
+        <listado-cobranza  [idCliente]="idCliente" ></listado-cobranza>
+      </div>
+    </div>
+  </div>

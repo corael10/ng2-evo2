@@ -1,0 +1,64 @@
+<section class="box-position">
+        <div class="container">
+                <div class="col-xs-12 col-md-10 col-sm-4 pull-right">                   
+        
+                     <!-- Message box title    --> 
+                    <div class="panel">
+                       
+                        <div class="panel-heading top-bar" role="tab" id="open-message">
+                            
+                            <div class="col-md-10 col-xs-10">
+                                <p class="panel-title"><span class="glyphicon glyphicon-comment"></span>...  {{numeroMensajes}}   Alertas de Mensajes</p>
+                            </div>
+                                    
+                            <div class="col-md-2 col-xs-2">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#message" aria-expanded="false" aria-controls="message">
+                                <span class="glyphicon  glyphicon-plus"></span></a>
+                            </div> 
+                                    
+                        </div>
+                    </div>
+                        
+                     <!-- Message body	--> 
+                     
+                        <div id="message" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="panel-body">
+                                   
+                                            
+                                            <div *ngFor="let item of mensajes; let i = index">
+
+                                                    
+
+                                               
+                                                <div *ngIf='item.estatus == 1' class="alert alert-warning alert-autocloseable-warning">
+                                                     [{{item.codeprod}}] - {{item.nombreprod}} --- Quedan {{item.unidades}} pz en stock desde {{item.fecha}} , es necesario solicitar pedido a tu proveedor
+                                                </div>                                               
+                                                
+                                                <div *ngIf='item.estatus == 2' class="alert alert-danger alert-autocloseable-danger">
+                                                    [{{item.codeprod}}] - {{item.nombreprod}} --- Quedan {{item.unidades}} pz en stock desde {{item.fecha}} , es necesario solicitar pedido a tu proveedor
+                                                </div>
+                                                <!--
+                                                    <div  class="alert alert-success alert-autocloseable-success">
+                                                       
+                                                        </div>
+                                                    <div class="alert alert-danger alert-normal-danger" hidden="hidden">
+                                                      <button type="button" class="close">×</button>
+                                                      I'm a normal danger message. To close use  the appropriate button.
+                                                </div>
+                                                
+                                                <div class="alert alert-info alert-autocloseable-info">
+                                                      I'm an autocloseable info message. I will hide in 6 seconds.
+                                                </div>
+                                                <div class="alert alert-info alert-normal-info" hidden="hidden">
+                                                      <button type="button" class="close">×</button>
+                                                      I'm a normal info message. To close use  the appropriate button.
+                                                </div>
+                                            -->
+                                            </div>
+                            </div>
+                        </div>
+                        
+                </div>
+        </div>
+        
+        </section>

@@ -1,0 +1,52 @@
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>   
+        <th>Nombre</th>  
+        <th>DIreccion</th>   
+        <th>Ciudad</th>   
+        <th>Telefono</th>
+        <th>Saldo</th>
+        <th>Fecha de Registro</th> 
+        <th>Estatus</th> 
+        
+        <th>Operaciones</th>
+    </tr>
+    <tr *ngFor="let item of empleados; let i = index">
+        <td>
+           {{item.id}}
+        </td>
+        <td>
+           {{item.nombre}} {{item.apellido}}
+        </td>        
+        <td>
+           {{item.direccion}}
+        </td>
+        <td>
+           {{item.ciudad}}
+        </td>
+        <td>
+           {{item.telefono}}
+        </td>
+        <td>
+           $ {{item.saldo}}
+        </td>
+        <td>
+            {{item.fecha_contra}}
+        </td>
+        
+        <td>
+			<div *ngIf="item.estatus =='0'" class="alert alert-danger">Inoperante</div>
+			<div *ngIf="item.estatus =='1'" class="alert alert-success">Activo</div>
+			
+
+		</td>
+        <td>
+                <button class="btn btn-primary" (click)="modificarEmpleado(item)"><i class="glyphicon glyphicon-pencil"></i></button>
+                <button class="btn btn-primary" (click)="removeEmpleado(item)"><i class="glyphicon glyphicon-remove-sign"></i></button>
+            </td>
+    </tr>
+
+
+
+
+</table>

@@ -1,0 +1,77 @@
+<div class="container content">
+       <div class="heading">
+        <h2>Our <strong>Great Team</strong></h2>
+        <p>Allowed Users in SQA Team</p>
+    </div><!-- //end heading -->
+    <div class="row">
+        <div *ngFor="let item of users; let i = index"  class="hover panel" onmouseover="javascript:this.className += ' flip';" onmouseout="javascript:this.className = 'hover panel';">
+          <div class="front">
+              <div class="frontTitle">
+                    {{item.first_name}} {{item.last_name}}
+              </div>
+              <div >
+                    
+                    <img  class="img-responsive" src="assets/users/{{item.username}}.jpg"
+                    onError="this.src='assets/users/user_default2.jpeg';"  alt="..."  />
+              </div>
+              <div class="frontLocation">
+                    {{item.username}}
+              </div>
+          </div>
+          <div class="back">
+            <div class="backTitle">SQA Member</div>
+            <div class="backParagraph">
+              Projects
+            </div>
+            <div class="backGoto">
+              
+            </div>
+          </div>
+        </div>
+    </div>
+        </div>
+        <!--
+        <div class="hover panel" onmouseover="javascript:this.className += ' flip';" onmouseout="javascript:this.className = 'hover panel';">
+          <div class="front">
+              <div class="frontTitle">
+                Boise Digital Marketing
+              </div>
+              <div class="frontLogo boisedigital">
+              </div>
+              <div class="frontLocation">
+                Boise, Idaho
+              </div>
+          </div>
+          <div class="back">
+            <div class="backTitle">Boise Digital Marketing</div>
+            <div class="backParagraph">
+              Boise Digital Marketing was founded in 2015 under a partnership between Koby & Nicholas. We're small agency doing big agency work.
+            </div>
+            <div class="backGoto">
+              <a href="http://boisedigitalmarketing.com" target="_blank" title="Boise Digital Marketing">Boise Digital →</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hover panel" onmouseover="javascript:this.className += ' flip';" onmouseout="javascript:this.className = 'hover panel';">
+          <div class="front">
+              <div class="frontTitle">
+                Cinematography
+              </div>
+              <div class="frontLogo dissolve">
+              </div>
+              <div class="frontLocation">
+                Dissolve.com
+              </div>
+          </div>
+          <div class="back">
+            <div class="backTitle"> Cinematography</div>
+            <div class="backParagraph">
+              I am an independent stock footage contributor on Dissolve.com. I use a GoPro Hero 3+, Canon EOS 70D and DJI Phantom 3 with Adobe Premiere to create the highest quality video and timeplapses I can.
+            </div>
+            <div class="backGoto">
+              <a href="http://dissolve.com/products?media_type=video&producer=Nicholas+Butler" target="_blank" title="Stock Video Collection (Not very comprehensive atm)">Stock Collection →</a>
+            </div>
+          </div>
+          </div>
+        </div>-->

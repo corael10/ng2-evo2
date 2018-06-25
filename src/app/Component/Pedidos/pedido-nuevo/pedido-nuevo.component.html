@@ -1,0 +1,270 @@
+<popup  #popup class="overlay"  >
+    {{msg}}
+</popup>
+
+<popup   #popup2 class="overlay" (cancelClick)="YourCancelEvent()">
+   <div class="row"><b> {{msg}}</b> </div>
+   <div class="row">
+     <br>
+     <br>
+   </div>
+   <div class="row" *ngIf="PedidoExito">
+   <ng-pdf-pedido [pedidoResponse]="pedidoResponse"></ng-pdf-pedido>
+  </div>
+</popup>
+
+<div id="divpop"  class="modal in" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Esta Seguro???</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete (this)?</p>
+        <div class="row">
+          <div class="col-12-xs text-center">
+            <button class="btn btn-success btn-md" (click)="confirmdelete()">Yes</button>
+            <button class="btn btn-danger btn-md" (click)="closemodal()" >No</button>
+          </div>
+        </div>
+      </div>
+     
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+<div id="page-wrapper">
+  <div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>Nueva Nota de Venta</h2>
+        <form method="POST" (ngSubmit)="submit()" role="form">
+          <div class="panel panel-default">
+            <div *ngIf="Datoscliente == 0" class="panel-body">
+              <div class="col-sm-2">
+                <label>Fecha</label>
+                <input id="fecha" name="fecha" type="date" placeholder="Fecha" class="form-control input-md" (change)="onFecha()" [(ngModel)]="model.fecha">
+              </div>
+              <div id="empleado" style="display: none;" class="col-sm-2">
+                <label for="empleado">Agente </label>
+                <select class="form-control" name="empleado" id="empleado" [(ngModel)]="model.empleado" (change)="onEmpleado($event)">
+                  <option></option>
+                  <option *ngFor="let option of empleados" [value]="option.id" [selected]="option == model.empleado ? true : false" readonly>{{option.nombre}} {{option.apellido}}</option>
+                </select>
+              </div>
+              <div id="cliente" style="display: none;" class="col-sm-2">
+                <label for="cliente">Cliente </label>
+                <select class="form-control" name="cliente" id="cliente" [(ngModel)]="model.cliente" (change)="onCliente($event)">
+                  <option></option>
+                  <option *ngFor="let option of clientes" [value]="option.id" [selected]="option == model.cliente ? true : false" readonly>{{option.nombre}} {{option.apellido}}</option>
+                </select>
+              </div>
+
+
+            </div>
+            <div *ngIf="Datoscliente != 0" class="panel-body">
+              
+              <div id="cliente" class="col-sm-3">
+                <label>Nombre Cliente</label>
+                <p id="cliente" name="cliente" style='text-transform:uppercase' type="text" placeholder="Cliente" class="form-control input-md" >
+                  <b> {{Datoscliente.nombre}} {{Datoscliente.apellido}}</b>
+                </p>
+              </div>
+              <div id="empleado" class="col-sm-3">
+                  <label>Agente</label>
+                  <p id="empleado" name="empleado" style='text-transform:uppercase' type="text" placeholder="Empleado" class="form-control input-md" >
+                      <b> {{Datoscliente.empleado?.nombre}} {{Datoscliente.empleado?.apellido}}</b>                                  
+                </div>
+                <div id="empleado" class="col-xs-1">
+                    <b></b>
+                    <button type="button" class="btn btn-primary" (click)="OnEmpleadoSustituto();"><i class="fa fa-fw fa fa-child"></i></button>
+                                           
+                </div>
+                
+                <div id="empleadoSustituto" style="display: none;" class="col-sm-2">
+                  <label for="empleadoSustituto">Agente Sustituto </label>
+                  <select class="form-control" name="empleadoSustituto" id="empleadoSustituto" [(ngModel)]="model.empleadosustituto" >
+                    <option></option>
+                    <option *ngFor="let option of empleados" [value]="option.id" [selected]="option == model.empleado ? true : false" readonly>{{option.nombre}} {{option.apellido}}</option>
+                  </select>
+                </div>
+
+                <div class="col-sm-2">
+                    <label>Fecha</label>
+                    <input id="fecha" name="fecha" type="date" placeholder="Fecha" class="form-control input-md" (change)="onFechaConCliente()" [(ngModel)]="model.fecha">
+                  </div>
+            </div>
+
+          </div>
+
+
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="row">
+                <div id="Divprod" class="col-xs-12">                    
+                  <div id="proveedores" style="display: none;" class="col-sm-2">
+                    <label for="proveedor">Proveedor</label>
+                    <select class="form-control" name="proveedor" id="proveedor" [(ngModel)]="model.proveedor" (change)="onProveedor($event.target.value)">
+                      <option></option>
+                      <option *ngFor="let option of proveedores" [value]="option.id" [selected]="option == model.proveedor ? true : false" readonly>{{option.nombre}}</option>
+                    </select>
+                  </div>
+                  <div id="marcas" style="display: none;" class="col-sm-2">
+                    <label for="marcas">Marca</label>
+                    <select class="form-control" name="marcas" id="marcas" (change)="onMarca($event.target.value)">
+                      <option></option>
+                      <option *ngFor="let option of marcas" [value]="option.id" readonly>{{option.nombre}}</option>
+                    </select>
+                  </div>
+                  <div id="familias" style="display: none;" class="col-sm-2">
+                    <label for="familias">Familia</label>
+                    <select class="form-control" name="familias" id="familias" (change)="onFamilia($event.target.value)">
+                      <option></option>
+                      <option *ngFor="let option of familias" [value]="option.id" readonly>{{option.nombre}}</option>
+                    </select>
+                  </div>
+                  <div id="producto" style="display: none;" class="col-sm-2" (change)="onProducto($event.target.value)">
+                    <label for="producto">Producto</label>
+                    <select class="form-control" name="producto" id="producto">
+                      <option></option>
+                      <option *ngFor="let option of productos" [value]="option.id" readonly>{{option.nombre}}</option>
+                    </select>
+                  </div>
+                  <div id="promoactiva" style="display: none;"  class="col-sm-3">
+                    <br>
+                      <font for="promoactiva" color="green"><b>*Familia con promocion activa</b></font>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="producto_temp" class="row" style="display: none;">
+            <div class="col-xs-12">
+              <form method="POST" (ngSubmit)="agregar_temp()" role="form_temp">
+                <table class="table table-striped">
+                  <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Familia</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th></th>
+                  </tr>
+                  <tr id="producto_temp">
+                    <td>
+                      {{productos_temp.id}}
+                    </td>
+                    <td>
+                      {{productos_temp.nombre}}
+                    </td>
+                    <td>
+                      {{productos_temp.familia?.nombre}}
+                    </td>
+                    <td class="col-sm-2">
+                      <select class="form-control" name="precio" id="precio" [(ngModel)]="model.productos.precio">
+                        <option></option>
+                        <option *ngFor="let option of preciosList" [value]="option.value" [selected]="option == model.precio ? true : false" readonly>${{option.value}} - {{option.title}}</option>
+                      </select>
+                    </td>
+<!--(keypress)="onUnidades($event)"-->
+                    <td *ngIf='bandera == false' class="col-sm-1">
+                      <input id="unidad" name="unidad" type="number" placeholder="#" class="form-control input-md" required=""  [(ngModel)]="unidad.unidades">
+                    </td>
+                    <td>
+                      <button type="submit" class="btn btn-primary">
+                        <i class="glyphicon glyphicon-plus"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </table>
+              </form>
+            </div>
+          </div>
+          <div id="productos_list" class="row">
+            <div class="col-xs-12">
+              <h2>Lista</h2>
+              <form role="form">
+                <div class="form-group">
+                  <table class="table  table-hover table-striped">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Familia</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                        <th>Functions</th>
+                      </tr>
+                    </thead>
+                    <tr *ngFor="let item of productos_arry; let i = index">
+                      <td>{{i+1}}</td>
+                      <td>
+                        {{item.nombre}}
+                      </td>
+                      <td>
+                        {{item.familia?.nombre}}
+                      </td>
+                      <td>
+                        ${{item.precio}}
+                      </td>
+                      <td *ngIf='bandera == true' class="col-sm-1">
+                        <input id="unidad" name="unidad" type="number" placeholder="#" class="form-control input-md" required="" [(ngModel)]="unidad.unidades">
+                      </td>
+                      <td *ngIf='bandera == false'>
+                        {{item.unidades}}
+                      </td>
+                      <td>
+                        ${{item.total}}
+                      </td>
+
+                      <td>
+                        <button class="btn btn-primary" (click)="onBorrar(item)">
+                          <i class="glyphicon glyphicon-remove-sign"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+              </form>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="col-sm-9">
+
+                <h3>
+                  <p align="right">
+                    <b>Total: </b>
+                  </p>
+                </h3>
+              </div>
+              <div class="col-md-offset-9">
+                <h3>
+                  <p align="">
+                    <b> ${{model.total}} </b>
+                  </p>
+                </h3>
+                <input style="display: none;" id="total" name="total" class="form-control no-border" type="number" placeholder="Total" [(ngModel)]="model.total">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+
+
+  </div>
+  <!-- /.container-fluid -->
+
+</div>
+<!-- /#page-wrapper -->

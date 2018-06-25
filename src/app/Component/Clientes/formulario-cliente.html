@@ -1,0 +1,110 @@
+<div class="text-center">
+    <h1 class="nice">Registrar Cliente</h1>
+</div>
+<form method="POST" data-toggle="validator" class="form-horizontal" (ngSubmit)="submit()" #listaClienteForm="ngForm">
+    <!-- Text input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="name">Nombre</label>
+
+        <div class="col-md-4">
+            <input id="nombre" name="nombre" type="text" placeholder="Nombre" class="form-control input-md" required="" [(ngModel)]="model.nombre"
+                #nombre="ngModel" required minlength="3" maxlength="50" pattern="[a-zA-Z][a-zA-Z0-9\s]*">
+            <span *ngIf="!nombre.valid && nombre.touched">
+                            <div [hidden]="!nombre.errors.required">
+                                    <h6>*Campo Obligatorio</h6>
+                            </div>
+                             <div [hidden]="!nombre.errors.minlength">
+                            <h6>*Minimo 3 caracteres</h6>
+                             </div>
+                             <div [hidden]="!nombre.errors.maxlength">
+                                    <h6> *Maximo 50 caracteres</h6>
+                            </div>
+                            <div [hidden]="!nombre.errors.pattern">
+                                    <h6>*Debe empezar en mayuscula</h6>
+                             </div>
+                    </span>
+        </div>
+    </div>
+    <div class="form-group">
+            <label class="col-md-4 control-label" for="apellido">Apellido</label>
+    
+            <div class="col-md-4">
+                <input id="apellido" name="apellido" type="text" placeholder="Apellido" class="form-control input-md" required="" [(ngModel)]="model.apellido"
+                    #apellido="ngModel" required minlength="3" maxlength="50" pattern="[a-zA-Z][a-zA-Z0-9\s]*">
+                <span *ngIf="!apellido.valid && apellido.touched">
+                                <div [hidden]="!apellido.errors.required">
+                                        <h6>*Campo Obligatorio</h6>
+                                </div>
+                                 <div [hidden]="!apellido.errors.minlength">
+                                <h6>*Minimo 3 caracteres</h6>
+                                 </div>
+                                 <div [hidden]="!apellido.errors.maxlength">
+                                        <h6> *Maximo 50 caracteres</h6>
+                                </div>
+                                <div [hidden]="!apellido.errors.pattern">
+                                        <h6>*Debe empezar en mayuscula</h6>
+                                 </div>
+                        </span>
+            </div>
+        </div>
+
+    <!-- Paddress input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="direccion">Direccion</label>
+
+        <div class="col-md-4">
+            <input id="direccion" name="direccion" type="text" placeholder="Direccion" class="form-control input-md" [(ngModel)]="model.direccion">
+        </div>
+    </div>
+    <!-- Taddress input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="ciudad">Ciudad</label>
+        <div class="col-md-4">
+            <input id="ciudad" name="ciudad" type="text" placeholder="Ciudad" class="form-control input-md" required="" [(ngModel)]="model.ciudad">
+        </div>
+    </div>
+    <!-- Phone input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="telefono">Telefono</label>
+        <div class="col-md-4">
+            <input id="telefono" name="telefono" type="tel" placeholder="Telefono" class="form-control input-md" required="" [(ngModel)]="model.telefono"
+                #telefono="ngModel" ng-minlength="10" ng-maxlength="10" pattern="[+ 0-9]{10}" required>
+            <span *ngIf="!telefono.valid">                    
+                             <div [hidden]="!telefono.errors.ng-maxlength">
+                                    <h6> *Obligatorio 10 digitos</h6>
+                            </div>                   
+                    </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="fecha">Feha de Registro</label>
+        <div class="col-md-4">
+            <input id="fecha" name="fecha" type="date" placeholder="Fecha" class="form-control input-md" required="" [(ngModel)]="model.fecha_registro">
+        </div>
+    </div>
+    
+     <div  class="row form-group"> 
+            <label class="col-md-4 control-label" for="empleado">Agente de Venta</label>
+            <div class="col-md-4">
+                <select name="empleado" id="empleado"  [(ngModel)]="model.empleado">
+                    <option></option>
+                    <option *ngFor="let option of empleados" [value]="option.id" [selected]="option == model.empleado ? true : false" readonly>{{option.nombre}} {{option.apellido}}</option>
+                </select>
+            </div>
+        </div>
+
+    <div class="form-group" *ngIf="!listaClienteForm.valid">
+        <span class="col-md-8 control-label">Comprueba los datos para poder guardar</span>
+    </div>
+    <!-- Button (Double) -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="button1id"></label>
+
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-primary" [disabled]="!listaClienteForm.valid">Guardar</button>
+
+        </div>
+    </div>
+</form>
+
+

@@ -1,0 +1,34 @@
+<table class="table table-striped">
+    <tr>
+        <th>ID Interno</th>   
+        <th>Folio</th>  
+        <th>Proveedor</th>
+        <th>fecha</th>
+        <th>Operaciones</th>
+    </tr>
+    <tr *ngFor="let item of registros; let i = index">
+        <td>
+           {{item.id}}
+        </td>
+        <td>
+           {{item.folio}}
+        </td>        
+        <td>
+           {{item.proveedor.nombre}}
+        </td>
+        <td>
+           {{item.fecha}}
+        </td>           
+        <td>
+                <button class="btn btn-primary" (click)="EjecutaPDF(item.id,1)"><i class="glyphicon glyphicon-eye-open"></i></button>
+                <button class="btn btn-primary" (click)="EjecutaPDF(item.id,2)"><i class="glyphicon glyphicon-print"></i></button>
+                <button class="btn btn-primary" (click)="EjecutaPDF(item.id,3)"><i class="glyphicon glyphicon-download-alt"></i></button>
+            <button class="btn btn-primary" [routerLink]="['../pdf',item]" ><i class="glyphicon glyphicon-list-alt"></i></button>
+            <!--<button class="btn btn-primary" (click)="removeProducto(item)"><i class="glyphicon glyphicon-remove-sign"></i></button>-->
+        </td>
+    </tr>
+
+
+
+
+</table>

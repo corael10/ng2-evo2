@@ -1,0 +1,13 @@
+
+.tamano {
+    font-size: 20px;  
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
+  :host /deep/ tr,th {   
+    text-align:left;
+    border: 1px solid black;
+    width: 100%;
+    height: 50px;
+    }
+

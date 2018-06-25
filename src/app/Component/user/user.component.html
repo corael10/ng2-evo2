@@ -1,0 +1,31 @@
+<div class="container">
+  <modal #modaluser>
+    <modal-header [show-close]="true">
+      <h4 class="modal-title">New Member</h4>
+    </modal-header>
+    <modal-body > 
+      <formulario-user (onsubmit)="guardar($event)" [model]="user"></formulario-user>
+    </modal-body>
+    <modal-footer>
+      <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="modal.dismiss()">Cerrar</button>
+    </modal-footer>
+  </modal>  
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-md-1">
+        <h4>Members</h4>
+      </div>
+      <div class="col-md-offset-11">
+        <button type="button" class="btn btn-success" (click)="addUser()">
+          <i class="glyphicon glyphicon-plus"></i></button> Add
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-12">
+      <listado-users [users]="users" (borrado)='onBorrar($event)' (modificado)='onModificar($event)'></listado-users>
+    </div>
+  </div>
+</div>

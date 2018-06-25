@@ -1,0 +1,34 @@
+<div class="text-center">
+    <h1 class="nice">Add Version</h1> 
+</div>
+<form method="POST" data-toggle="validator" class="form-horizontal" (ngSubmit)="submit()" #listaVersionForm="ngForm">
+    <!-- Text input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="name">Version</label>
+
+        <div class="col-md-4">
+            <input id="userid" name="userid" type="text" placeholder="App Id" class="form-control input-md" [(ngModel)]="model.version"
+                #version="ngModel"  >           
+        </div>
+    </div>    
+    
+
+
+
+            
+   
+    <div class="form-group" *ngIf="!listaVersionForm.valid">
+        <span class="col-md-8 control-label">Check the data to be able to save</span>
+    </div>
+    <!-- Button (Double) -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="button1id"></label>
+
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-primary" [disabled]="!listaVersionForm.valid">Guardar</button>
+
+        </div>
+    </div>
+</form>
+
+

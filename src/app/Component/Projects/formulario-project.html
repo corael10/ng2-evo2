@@ -1,0 +1,62 @@
+<div class="text-center">
+    <h1 class="nice">Add project</h1>
+</div>
+<form method="POST" data-toggle="validator" class="form-horizontal" (ngSubmit)="submit()" #listaProjectForm="ngForm">
+    <!-- Text input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="name">Name</label>
+
+        <div class="col-md-4">
+            <input id="name" name="name" type="text" placeholder="Name" class="form-control input-md" required="" [(ngModel)]="model.name"
+                #name="ngModel" required minlength="3" maxlength="50" >
+            <span *ngIf="!name.valid && name.touched">
+                            <div [hidden]="!name.errors.required">
+                                    <h6>*Campo Obligatorio</h6>
+                            </div>
+                             <div [hidden]="!name.errors.minlength">
+                            <h6>*Minimo 3 caracteres</h6>
+                             </div>
+                            <!-- <div [hidden]="!name.errors.maxlength">
+                                    <h6> *Maximo 50 caracteres</h6>
+                            </div>
+                            <div [hidden]="!name.errors.pattern">
+                                    <h6>*Debe empezar en mayuscula</h6>
+                             </div>-->
+                    </span>
+        </div>
+    </div>
+
+    <!-- Paddress input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="description">Description</label>
+
+        <div class="col-md-4">
+            <input id="description" name="description" type="text" placeholder="Description" class="form-control input-md" [(ngModel)]="model.description">
+        </div>
+    </div>
+    <!-- Taddress input-->
+    <div class="row form-group">
+        <label class="col-md-4 control-label" for="firmware">Status</label>
+        <div class="col-md-7">
+            <select name="status" id="status" required [(ngModel)]="model.activo"  >
+                <option [value]="true" [selected]="option == model.activo ? true : false" >Active</option>
+                <option [value]="false" [selected]="option == model.activo ? true : false" >Deactivate</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" *ngIf="!listaProjectForm.valid">
+        <span class="col-md-8 control-label">Check the data to be able to save</span>
+    </div>
+    <!-- Button (Double) -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="button1id"></label>
+
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-primary" [disabled]="!listaProjectForm.valid">Save</button>
+
+        </div>
+    </div>
+</form>
+
+

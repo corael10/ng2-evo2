@@ -1,0 +1,7 @@
+<!--<button (click)="pdfmake.open()">Abrir PDF</button>
+<button (click)="pdfmake.print()">Imprimir PDF</button>
+<button (click)="pdfmake.download()">Descargar PDF</button>-->
+
+<button type="button" title="Abrir PDF" class="btn btn-warning btn-xs" (click)="pdfmake.open()"> <i class="glyphicon glyphicon-eye-open"></i></button> 
+<button type="button" title="Imprimir PDF" class="btn btn-primary btn-xs" (click)="pdfmake.print()"> <i class="glyphicon glyphicon-print"></i></button> 
+<button type="button" title="Descargar PDF" class="btn btn-success btn-xs" (click)="pdfmake.download(idpedido +' '+productos[0]['pedido_entrada']['cliente']['nombre']+ ' '+productos[0]['pedido_entrada']['cliente']['apellido'] )"> <i class="glyphicon glyphicon-download-alt"></i></button> 

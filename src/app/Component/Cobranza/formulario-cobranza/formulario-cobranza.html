@@ -1,0 +1,53 @@
+<div class="text-center">
+    <h1 class="nice">Agregar Abono</h1>
+</div>
+<form method="POST" data-toggle="validator" class="form-horizontal" (ngSubmit)="submit()" #listaCobranzaForm="ngForm">
+    <!-- Text input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="cliente">Cliente</label>
+        <div class="col-md-4">
+            <input id="cliente" name="cliente" type="text" placeholder="Cliente" class="form-control input-md" required="" readonly [(ngModel)]="model.cliente ">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="empleado">Agente</label>
+        <div class="col-md-4">
+            <input id="empleado" name="empleado" type="text" placeholder="Agente" class="form-control input-md" required="" readonly [(ngModel)]="model.empleado.nombre + ' '+ model.empleado.apellido">
+        </div>
+    </div>
+    <div class="form-group">
+            <label class="col-md-4 control-label" for="fecha">Feha de abono</label>    
+            <div class="col-md-4">
+                <input id="fecha" name="fecha" type="date" placeholder="Fecha de Contratacion" class="form-control input-md" required=""
+                    [(ngModel)]="model.fecha">
+            </div>
+        </div>
+
+    <!-- Paddress input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="abono">Abono</label>
+
+        <div class="col-md-4">
+            <input id="abono" name="abono" type="number" placeholder="Abono" class="form-control input-md" required="" [(ngModel)]="model.abono">
+        </div>
+    </div>
+   
+
+   
+    
+    <div class="form-group" *ngIf="!listaCobranzaForm.valid">
+        <span class="col-md-8 control-label">Comprueba los datos para poder guardar</span>
+    </div>
+    <!-- Button (Double) -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="button1id"></label>
+
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-primary" [disabled]="!listaCobranzaForm.valid">Guardar</button>
+
+        </div>
+    </div>
+</form>
+
+
+

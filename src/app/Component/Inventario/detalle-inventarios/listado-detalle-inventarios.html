@@ -1,0 +1,50 @@
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Detalles de Folio: <b> {{source.data[0]?.folio |uppercase}}</b></h2>               
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="col-sm-2">
+                                <label>Folio</label>
+                                <p id="folio" name="folio" style='text-transform:uppercase' type="text" placeholder="Folio" class="form-control input-md" ><b> {{source.data[0]?.folio}}</b></p>
+                            </div>
+                            <div class="col-sm-2">
+                                <label>Fecha</label>
+                                <p id="fecha" name="fecha"  placeholder="Fecha" class="form-control input-md"><b>{{source.data[0]?.inventario_entrada?.fecha}}</b></p>
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="proveedor">Proveedor</label>
+                                <p id="proveedor" name="proveedor"  placeholder="Proveedor" class="form-control input-md" ><b>{{source.data[0]?.producto?.marca?.proveedor?.nombre}}</b></p>
+                            </div>
+                            <div class="col-sm-2">
+                                <label>Fecha</label>
+                                <p id="fecha" name="fecha"  placeholder="Fecha" class="form-control input-md"><b>{{source.data[0]?.inventario_entrada?.fecha_proveedor}}</b></p>
+                            </div>
+                            
+                        </div>
+                    </div>                
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-body">
+            <ng2-smart-table class="tamano" [settings]="settings" [source]="source" (editConfirm)="onSaveConfirm($event)" (deleteConfirm)="onDeleteConfirm($event)"
+                (createConfirm)="onCreateConfirm($event)" (custom)="onCustom($event)">
+            </ng2-smart-table>
+        </div>
+        </div>
+        <div class="row">
+                <div class="col-xs-12">
+                        <div class="col-sm-11">
+                                
+                                <h3><p align="right"  ><b>Total: </b></p></h3>
+                            </div>
+                            <div class="col-md-offset-11">                                
+                            <h3>  <p ><b>{{total}}</b></p></h3>
+                            </div>
+                </div>
+        </div>
+    </div>
+</div>

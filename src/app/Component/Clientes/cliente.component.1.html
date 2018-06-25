@@ -1,0 +1,37 @@
+<div class="container">
+  <modal #modal>
+    <modal-header [show-close]="true">
+      <h4 class="modal-title">Nuevo Cliente</h4>
+    </modal-header>
+    <modal-body>
+      <formulario-cliente (onsubmit)="guardar($event)" [model]="cliente" [empleados]="empleados"></formulario-cliente>
+    </modal-body>
+    <modal-footer>
+      <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="modal.dismiss()">Cerrar</button>
+    </modal-footer>
+  </modal>  
+</div>
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-md-1">
+        <h4>Clientes</h4>
+      </div>
+      <div class="col-md-offset-11">
+        <button type="button" class="btn btn-success" (click)="addCliente()">
+          <i class="glyphicon glyphicon-plus"></i></button> Agregar
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-12">
+      <listado-clientes [clientes]="clientes" (borrado)='onBorrar($event)' (modificado)='onModificar($event)' (nuevopedido)='onNuevoPedido($event)'></listado-clientes>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Familias de la marca {{IDmarca[0].marca.nombre}}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+ <ng2-smart-table class="tamano" [settings]="settings" [source]="source" (editConfirm)="onSaveConfirm($event)"  (deleteConfirm)="onDeleteConfirm($event)" 
+    (createConfirm)="onCreateConfirm($event)" (userRowSelect)="onUserRowSelect($event)">
+    </ng2-smart-table>
+    </div>
+    </div>
+    </div>

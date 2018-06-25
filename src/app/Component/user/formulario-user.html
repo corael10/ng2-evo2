@@ -1,0 +1,73 @@
+<div class="text-center">
+    <h1 class="nice">Add User</h1> 
+</div>
+<form method="POST" data-toggle="validator" class="form-horizontal" (ngSubmit)="submit()" #listaUserForm="ngForm">
+    <!-- Text input-->
+    <div *ngIf='updateUser' class="form-group">
+            <label class="col-md-4 control-label" for="id">User ID</label>
+            <div class="col-md-4">
+                <input readonly id="id" name="id" type="text" placeholder="User ID" class="form-control input-md" [(ngModel)]="model.id">
+            </div>
+        </div>
+    <div class="form-group">
+            <label class="col-md-4 control-label" for="username">Username</label>
+    
+            <div class="col-md-4">
+                <input id="username" name="username" type="text" placeholder="Username" class="form-control input-md" [(ngModel)]="model.username"
+                    #username="ngModel"  >
+               
+            </div>
+        </div>      
+    <div class="form-group">
+            <label class="col-md-4 control-label" for="name">Name</label>
+    
+            <div class="col-md-4">
+                <input id="name" name="name" type="text" placeholder="name" class="form-control input-md" [(ngModel)]="model.first_name"
+                    #first_name="ngModel"  >
+               
+            </div>
+        </div>   
+        <div class="form-group">
+                <label class="col-md-4 control-label" for="lastname">LastName</label>
+        
+                <div class="col-md-4">
+                    <input id="lastname" name="lastname" type="text" placeholder="LastName" class="form-control input-md" [(ngModel)]="model.last_name"
+                        #last_name="ngModel"  >
+                   
+                </div>
+            </div>  
+    <div class="row form-group">
+            <label class="col-md-4 control-label" for="status">Type User</label>
+            <div class="col-md-7">
+                <select name="typeuser" id="typeuser" required [(ngModel)]="model.is_superuser">
+                    <option></option>
+                    <option value="1">Administrator</option>
+                    <option value="0">Tester</option>
+                    
+    
+                </select>
+            </div>
+        </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="date">Registration Date</label>
+        <div class="col-md-4">
+            <input type="date" id="date" name="date" placeholder="Date" class="form-control input-md" [(ngModel)]="model.date_joined"
+                required="" />
+        </div>
+    </div>
+
+    <div class="form-group" *ngIf="!listaUserForm.valid">
+        <span class="col-md-8 control-label">Check the data to be able to save</span>
+    </div>
+    <!-- Button (Double) -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="button1id"></label>
+
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-primary" [disabled]="!listaUserForm.valid">Guardar</button>
+
+        </div>
+    </div>
+</form>
+
+

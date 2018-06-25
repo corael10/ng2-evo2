@@ -1,0 +1,51 @@
+<table class="table  table-hover table-striped">
+    <tr>
+        <th></th>  
+        <th>ID</th>   
+        <th>Nombre</th>  
+        <th>DIreccion</th>   
+        <th>Ciudad</th>   
+        <th>Telefono</th>
+        <th>Saldo</th>
+        <th>Fecha de Registro</th> 
+        <th>Empleado</th>   
+        <th>Operaciones</th>
+    </tr>
+    <tr *ngFor="let item of clientes; let i = index">
+            <td>
+            <a title="Nuevo Pedido" [routerLink]="['../pedidos',item]"><i  class="glyphicon glyphicon-list-alt"></i></a>             
+                </td>
+        <td>
+           {{item.id}}
+        </td>
+        <td>
+           {{item.nombre}}
+        </td>        
+        <td>
+           {{item.direccion}}
+        </td>
+        <td>
+           {{item.ciudad}}
+        </td>
+        <td>
+           {{item.telefono}}
+        </td>
+        <td>
+           ${{item.saldo}}
+        </td>
+        <td>
+            {{item.fecha_registro}}
+        </td>
+        <td>
+                {{item.empleado.nombre}} {{item.empleado.apellido}}
+            </td>
+        <td>
+            <button class="btn btn-primary" (click)="modificarCliente(item)"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button class="btn btn-primary" (click)="removeCliente(item)"><i class="glyphicon glyphicon-remove-sign"></i></button>
+        </td>
+    </tr>
+
+
+
+
+</table>

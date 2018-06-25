@@ -1,0 +1,132 @@
+<div class="text-center">
+    <h1 class="nice">Registrar Empleado</h1>
+</div>
+<form method="POST" data-toggle="validator" class="form-horizontal" (ngSubmit)="submit()" #listaEmpleadoForm="ngForm">
+    <!-- Text input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="name">Nombre</label>
+
+        <div class="col-md-4">
+            <input id="nombre" name="nombre" type="text" placeholder="Nombre" class="form-control input-md" required="" [(ngModel)]="model.nombre"
+                #nombre="ngModel" required minlength="3" maxlength="50" pattern="[a-zA-Z][a-zA-Z0-9\s]*">
+            <span *ngIf="!nombre.valid && nombre.touched">
+                            <div [hidden]="!nombre.errors.required">
+                                    <h6>*Campo Obligatorio</h6>
+                            </div>
+                             <div [hidden]="!nombre.errors.minlength">
+                            <h6>*Minimo 3 caracteres</h6>
+                             </div>
+                             <div [hidden]="!nombre.errors.maxlength">
+                                    <h6> *Maximo 50 caracteres</h6>
+                            </div>
+                            <div [hidden]="!nombre.errors.pattern">
+                                    <h6>*Debe empezar en mayuscula</h6>
+                             </div>
+                    </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="apellido">Apellido</label>
+
+        <div class="col-md-4">
+            <input id="apellido" name="apellido" type="text" placeholder="Apellido" class="form-control input-md" [(ngModel)]="model.apellido">
+        </div>
+    </div>
+
+    <!-- Paddress input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="direccion">Direccion</label>
+
+        <div class="col-md-4">
+            <input id="direccion" name="direccion" type="text" placeholder="Direccion" class="form-control input-md" [(ngModel)]="model.direccion">
+        </div>
+    </div>
+    <!-- Taddress input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="ciudad">Ciudad</label>
+        <div class="col-md-4">
+            <input id="ciudad" name="ciudad" type="text" placeholder="Ciudad" class="form-control input-md" required="" [(ngModel)]="model.ciudad">
+        </div>
+    </div>
+    <!-- Phone input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="telefono">Telefono</label>
+        <div class="col-md-4">
+            <input id="telefono" name="telefono" type="tel" placeholder="Telefono" class="form-control input-md" required="" [(ngModel)]="model.telefono"
+                #telefono="ngModel" ng-minlength="10" ng-maxlength="10" pattern="[+ 0-9]{10}" required>
+            <span *ngIf="!telefono.valid">                            
+                             <div [hidden]="!telefono.errors.ng-maxlength">
+                                    <h6> *Obligatorio 10 digitos</h6>
+                            </div>                   
+                    </span>
+        </div>
+    </div>
+   
+    <!-- Mother Name input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="fecha">Feha de Contratacion</label>
+
+        <div class="col-md-4">
+            <input id="fecha" name="fecha" type="date" placeholder="Fecha de Contratacion" class="form-control input-md" required="" [(ngModel)]="model.fecha_contra">
+        </div>
+    </div>
+
+    <div  class="row form-group"> 
+        <label class="col-md-4 control-label" for="marca">Estatus</label>
+        <div class="col-md-5">
+            <select name="estatus" id="estatus"  [(ngModel)]="model.estatus">
+                <option  [value]="0" [selected]="option == model.estatus ? true : false" >Inoperante</option>
+                <option  [value]="1" [selected]="option == model.estatus ? true : false" >Activo</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group" *ngIf="!listaEmpleadoForm.valid">
+        <span class="col-md-8 control-label">Comprueba los datos para poder guardar</span>
+    </div>
+    <!-- Button (Double) -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="button1id"></label>
+
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-primary" [disabled]="!listaEmpleadoForm.valid">Guardar</button>
+
+        </div>
+    </div>
+</form>
+
+
+
+
+
+<!--<form method="POST" class="form form-inline" (ngSubmit)="submit()" #listaEmpleadoForm="ngForm">
+    <div class="form-group">
+        <label for="txtNombre">Nombre</label>
+        <input type="text" id="txtNombre" name="txtNombre" placeholder="Enter Nombre" [(ngModel)]="model.nombre" />
+    </div>
+    <div class="form-group">
+        <label for="txtDireccion">Direccion</label> 
+        <input type="text" id="txtDireccion" name="txtDireccion" placeholder="Enter Direccion" [(ngModel)]="model.direccion" />
+    </div>
+    <div class="form-group">
+        <label for="txtTelefono">Telefono</label>
+        <input type="text" id="txtTelefono" name="txtTelefono" placeholder="Enter Telefono" [(ngModel)]="model.telefono" />
+    </div>
+    <div class="form-group">
+        <label for="txtCiudad">Ciudad</label>
+        <input type="text" id="txtCiudad" name="txtCiudad" placeholder="Enter Ciudad" [(ngModel)]="model.ciudad" />
+    </div>
+    <div class="form-group">
+        <label for="txtSaldo">Saldo</label>
+        <input type="text" id="txtSaldo" name="txtSaldo" placeholder="Enter Saldo" [(ngModel)]="model.saldo" />
+    </div>
+    <div class="form-group">
+            <label for="txtFecha">Fecha de Registro</label>
+            <input type="text" id="txtFecha" name="txtFecha" placeholder="Enter Fecha de Registro" [(ngModel)]="model.fecha_registro" />
+    </div>
+        <div class="form-group">
+        <div class="col-sm-10 col-sm-offset-2">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+    </div>
+</form>
+-->

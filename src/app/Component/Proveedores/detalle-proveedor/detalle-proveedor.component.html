@@ -1,0 +1,29 @@
+<div class="container">
+    <modal #modal>
+      <modal-header [show-close]="true">
+        <h4 class="modal-title">Nuevo Produto</h4>
+      </modal-header>
+      <modal-body>
+        <formulario-producto (onsubmit)="guardar($event)" [model]="producto" [marcas]="marcas" [familias]="familias"></formulario-producto>
+      </modal-body>
+      <modal-footer>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="modal.dismiss()">Cerrar</button>
+      </modal-footer>
+    </modal>
+  </div>
+  
+    
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-md-2">
+          <h4>Detalle Proveedor </h4>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="col-md-12">
+        <listado-detalle-proveedor  ></listado-detalle-proveedor>
+      </div>
+    </div>
+  </div>

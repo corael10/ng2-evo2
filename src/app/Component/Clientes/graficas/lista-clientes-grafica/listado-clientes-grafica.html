@@ -1,0 +1,36 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+           <!-- <i class="fa fa-money fa-fw"></i> Abonos del mes Actual  <a class="fa fa-search fa-fw" (click)="verRango()"></a>-->
+           <i class="fa fa-money fa-fw"></i> Clientes Morosos 
+        </h3>
+            
+    </div>
+    <div class="panel-body">
+        <div style="display: none;" id="rango" class="row">
+
+            <div class="col-sm-5">
+                <label>Filtrar de:</label>
+                <input id="fechaD" name="fecha" type="date" placeholder="Fecha" class="form-control input-md" [(ngModel)]="modelRango.fechaD">
+            </div>
+            <div class="col-sm-5">
+                <label>A:</label>
+                <input id="fechaA" name="fecha" type="date" placeholder="Fecha" class="form-control input-md" [(ngModel)]="modelRango.fechaA">
+            </div>
+
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary" (click)="ConsultaRango()" >Ir</button>
+
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="table-responsive">
+                <ng2-smart-table class="tamano" [settings]="settings" [source]="source" (editConfirm)="onSaveConfirm($event)" (deleteConfirm)="onDeleteConfirm($event)"
+                    (createConfirm)="onCreateConfirm($event)" (userRowSelect)="onUserRowSelect($event)">
+                </ng2-smart-table>
+            </div>
+        </div>
+    </div>
+</div>

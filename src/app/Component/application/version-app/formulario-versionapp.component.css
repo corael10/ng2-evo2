@@ -1,0 +1,37 @@
+.white-bg {
+    background-color: rgb(255, 255, 255);
+    padding: 2em 0;
+    width: 100%;
+    margin: auto;
+  }
+
+.custom-button2 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.3em;
+    font-weight: 800;
+    background: #f7971e;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f7971e, #ffd200);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f7971e, #ffd200);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    margin-left: 50%;
+    margin-top: -32px;
+    width: 35%;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .custom-button2:hover {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    vertical-align: middle;
+    transform: scale(1.1);
+    transition: .3s ease-out;
+  }
