@@ -1,6 +1,6 @@
 {
-  "name": "projectONO",
-  "version": "0.0.0",
+  "name": "ng2-evo",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
