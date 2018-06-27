@@ -49,6 +49,7 @@ import {PdfPedidoComponent} from './Component/Pedidos/pdf/pdf.component';
 import { UserComponent } from './Component/user/user.component';
 import { ListadoUsersComponent} from './Component/user/listado-users/listado-users.component';
 import { FormularioUserComponent } from './Component/user/formulario-user.component';
+import { FormularioImagenComponent } from './Component/user/listado-users/formulario-imagen/formulario-imagen.component';
 
 //******clientes COMPONENTS********
 import { ClienteComponent } from './Component/Clientes/cliente.component';
@@ -94,6 +95,7 @@ import { FormularioProjectComponent } from './Component/Projects/formulario-proj
 import { MensajesComponent } from './Component/mensajeria/mensajes.component';
 
 import { PdfComponent} from './Component/Inventario/pdf/pdf.component'; 
+
  
  
 
@@ -124,10 +126,10 @@ import { HeaderComponent } from './Component/header/header.component.';
 import { PdfmakeModule } from 'ng-pdf-make';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ChartsModule } from 'ng2-charts';
-import { RouteConfigLoadStart } from '@angular/router/src/events';
 
+import { NgProgressModule,NgProgressBrowserXhr } from 'ngx-progressbar';
 
-
+import { BrowserXhr } from '@angular/http';
 
 
 
@@ -142,7 +144,8 @@ import { RouteConfigLoadStart } from '@angular/router/src/events';
   ChartsModule,
   PdfmakeModule,
   Ng2SmartTableModule,
-  PopupModule.forRoot()
+  PopupModule.forRoot(),
+  NgProgressModule
 ], 
 
   declarations: [ 
@@ -151,6 +154,7 @@ import { RouteConfigLoadStart } from '@angular/router/src/events';
     UserComponent,
     ListadoUsersComponent,
     FormularioUserComponent,
+    FormularioImagenComponent,
     ProveedoresComponent,
     ListadoProveedoresComponent,
     GraficasProveedoresComponent,
@@ -228,7 +232,9 @@ import { RouteConfigLoadStart } from '@angular/router/src/events';
     ProjectsServices,
     InventariosServices,
     CobranzaServices,
-    MensajesServices],
+    MensajesServices,
+    {provide: BrowserXhr, useClass: NgProgressBrowserXhr}
+  ],
 
   bootstrap: [
     DefaultComponent]

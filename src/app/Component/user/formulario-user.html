@@ -41,8 +41,8 @@
             <div class="col-md-7">
                 <select name="typeuser" id="typeuser" required [(ngModel)]="model.is_superuser">
                     <option></option>
-                    <option value="1">Administrator</option>
-                    <option value="0">Tester</option>
+                    <option value="1">Administrador</option>
+                    <option value="0">Agente</option>
                     
     
                 </select>
@@ -55,6 +55,7 @@
                 required="" />
         </div>
     </div>
+    <input type="file" (change)="onArchivoSeleccionado($event)">
 
     <div class="form-group" *ngIf="!listaUserForm.valid">
         <span class="col-md-8 control-label">Check the data to be able to save</span>

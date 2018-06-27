@@ -10,7 +10,8 @@ export class User {
         public is_active?: string,  
         public password?: string,
         public email?: string, 
-        public date_joined?: string, 
+        public date_joined?: string,
+        public imagen?:Userimg 
            
     ) {
 
@@ -25,4 +26,12 @@ export class UserPassword {
     usuario : string;
     password_anterior: string;
     password: string;
+}
+
+export class Userimg {
+    id: number;
+    usuario: string;
+    file : string;
+    nombre: string;
+    fecha: string; 
 }

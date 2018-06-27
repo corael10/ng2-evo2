@@ -13,7 +13,7 @@ import { ProveedoresServices } from '../../../../servicios/proveedores.service';
   styleUrls: ['./listado-familias.css']
 })
 export class ListadoFamiliasComponent {
-  
+  private selectPromo = [];
   constructor(private servicio: ProductosServices,private servicio_prov: ProveedoresServices) {
 
     //this.getall();
@@ -25,20 +25,21 @@ export class ListadoFamiliasComponent {
     this.getall();
   }
 getall(){
-  console.log('entrando y encontrando valor de marca ',this.IDmarca);
-  this.source.load(this.IDmarca);
+  console.log('entrando y encontrando valor de marca ',this.IDmarca.id);
+ // this.source.load(this.IDmarca);
    /* this.servicio.getMarcas().subscribe(data => {
         this.source.load(data);
         console.log("source ", this.source);
-      });
-
-      this.servicio.getFamilia_Select(this.IDmarca).subscribe(data => {
-        console.log('familias ', data);
-        this.source.load(data);
       });*/
 
+      this.servicio.getFamilia_Select(this.IDmarca.id).subscribe(data => {
+        console.log('familias en familia component', data);
+        this.source.load(data);
+      });
+      this.selectPromo.push({ value: 1, title: 'Activa' });
+      this.selectPromo.push({ value: 0, title: 'No Activa' });
       
-      this.servicio_prov.getProveedor().subscribe(
+     /* this.servicio_prov.getProveedor().subscribe(
         data => {
           this.source2 = new LocalDataSource(data);
           data.forEach(category => {
@@ -50,12 +51,13 @@ getall(){
           this.settings = this.loadTableSettings();
         },
         error => error
-      );
+      );*/
 
-    
+      this.settings = this.loadTableSettings();
  
 }
-selectListMarca = [];
+
+
 
 
 loadTableSettings() {
@@ -67,9 +69,9 @@ loadTableSettings() {
       confirmCreate: true,
     },
     edit: {
-      editButtonContent: '<i class="glyphicon glyphicon-pencil"></i>',
-      saveButtonContent: '<i class="glyphicon glyphicon-ok"></i>',
-      cancelButtonContent: '<i class="glyphicon glyphicon-remove"></i>',
+      editButtonContent: '<i ></i>',
+      saveButtonContent: '<i ></i>',
+      cancelButtonContent: '<i ></i>',
       confirmSave: true,
     },
     delete: {
@@ -92,7 +94,7 @@ loadTableSettings() {
         title: 'Descripcion',
         type: 'string',
       },
-      marca:{
+      /*marca:{
         title:'Marca',
         type:'string',
         valuePrepareFunction: (marca) => {
@@ -106,7 +108,36 @@ loadTableSettings() {
       promoactiva: {
         title: 'Promocion',
         type: 'string',
-      },
+      },*/
+      promoactiva: {
+        title: 'Promocion',
+        type: 'string',
+        filter:false,
+        valuePrepareFunction: (promoactiva) => {
+          if (promoactiva != null) {
+            if(promoactiva == 1 )
+            {
+              return 'Activa'
+            }
+            else{
+              return 'No Activa';
+            }
+            
+          }          
+        },
+        
+        editor: 
+         {
+          type: 'list',
+          config: {
+            selectText: 'Select...',
+            list: this.selectPromo,
+          },
+
+        },
+        
+        
+        },
         
         
       
@@ -124,7 +155,8 @@ loadTableSettings() {
 
   
   onCreateConfirm(event): void {
-    console.log(event.newData);
+    event.newData['marca']= this.IDmarca.id;
+    console.log('crear ', event.newData);
     this.servicio.addFamilia(event.newData).subscribe(data => {
         //this.productos.push(data);
     });
@@ -134,7 +166,10 @@ loadTableSettings() {
 
   onSaveConfirm(event): void {
     
-    this.servicio.updateFamilia(event.newData).subscribe();    
+    this.servicio.updateFamilia(event.newData).subscribe(); 
+    
+    event.newData['marca']= this.IDmarca.id;
+    console.log('new data ',event.newData );
     //this.getall();
     event.confirm.resolve();
   }

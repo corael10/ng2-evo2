@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import { Http, Headers,RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import '../rxjs/index';
-import { User,UserPassword } from '../Classes/Usr';
+import { User,UserPassword, Userimg } from '../Classes/Usr';
 import { ConfigServices} from '../../config.service'
 
 
@@ -53,7 +53,25 @@ export class UsersServices {
             
     }
 
-  
+    public subirArchivo(file,usuario): Observable<string> {
+        let formData = new FormData();
+        formData.append('file', file);
+        formData.append('nombre', file.name);
+        formData.append('usuario', usuario);
+        //formData.append('timestamp', '2018-05-05'); 
+       // const url = "http://"; //destino en el servidor
+        const headers = new Headers({});
+        let options = new RequestOptions({ headers: headers });
+        return this.http.post(this.getUrl('user/upload/'), formData, { headers: headers })
+        .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+        .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+        //return this.http.get(this.getUrl('user/GetUserimg/'),{ headers: headers }).map(this.getDatos).catch(this.error); 
+        
+    }
+    getUserimg(): Observable<Userimg[]> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        return this.http.get(this.getUrl('user/GetUserimg/'),{ headers: headers }).map(this.getDatos).catch(this.error); 
+    }
 
     
 

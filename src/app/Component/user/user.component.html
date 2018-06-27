@@ -1,7 +1,7 @@
 <div class="container">
   <modal #modaluser>
     <modal-header [show-close]="true">
-      <h4 class="modal-title">New Member</h4>
+      <h4 class="modal-title">Nuevo Miembro</h4>
     </modal-header>
     <modal-body > 
       <formulario-user (onsubmit)="guardar($event)" [model]="user"></formulario-user>
@@ -15,7 +15,7 @@
   <div class="panel-heading">
     <div class="row">
       <div class="col-md-1">
-        <h4>Members</h4>
+        <h4>Miembros</h4>
       </div>
       <div class="col-md-offset-11">
         <button type="button" class="btn btn-success" (click)="addUser()">

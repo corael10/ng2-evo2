@@ -71,7 +71,7 @@ export class PdfPedidoComponent implements OnInit {
             fila.push( this.productos[key]['producto']['marca']['nombre'] );
             fila.push( '$'+ this.productos[key]['precio'] );
             fila.push( this.productos[key]['unidades'] );
-            fila.push( '$'+this.productos[key]['total'] );
+            fila.push(Intl.NumberFormat('en-US',{style:'currency', currency: 'USD'}).format(this.productos[key]['total']) );
             body.push(fila);
         }       
     }
@@ -134,9 +134,9 @@ export class PdfPedidoComponent implements OnInit {
 			alignment: 'justify',
 			columns: [
     
-    {text: ' ', colSpan: 5, alignment: '',  fontSize: 14, bold: true, margin: [0, 20, 0, 8,0]},{},{},{},{},{},
+    {text: ' ', colSpan: 2, alignment: '',  fontSize: 14, bold: true, margin: [0, 20, 0, 8,0]},{},{},{},
    
-    {text: 'Total: '+this.productos[0]['pedido_entrada']['total'],colSpan: 2, alignment: 'center',  fontSize: 14, bold: true, margin: [0, 20, 0, 8,0]},{}
+    {text: 'Total: '+Intl.NumberFormat('en-US',{style:'currency', currency: 'USD'}).format(this.productos[0]['pedido_entrada']['total']) ,colSpan: 1, alignment: 'center',  fontSize: 14, bold: true, margin: [0, 20, 0, 8,0]}
       ]
     }
 	],

@@ -111,12 +111,12 @@ loadTableSettings() {
   //public marcaID: any;
   @Output() marcaID = new EventEmitter();
   onUserRowSelect(event): void {
-    
-    this.servicio.getFamilia_Select(event.data.id).subscribe(data => {
+    this.marcaID.emit({id:event.data});
+    /*this.servicio.getFamilia_Select(event.data.id).subscribe(data => {
       console.log('familias ', data);
       //this.source3.load(data);
       this.marcaID.emit({nombre:data});
-    });
+    });*/
     
     $('#familias').show();
     //this.marcaID= event.data.id;    

@@ -1,7 +1,20 @@
+<div class="container">
+  <modal #modalimagen>
+    <modal-header [show-close]="true">
+      <h4 class="modal-title">Elegir Imagen</h4>
+    </modal-header>
+    <modal-body > 
+      <formulario-imagen [usuario]="usuario"  ></formulario-imagen>
+    </modal-body>
+    <modal-footer>
+      <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="modal.dismiss()">Cerrar</button>
+    </modal-footer>
+  </modal>  
+</div>
 <div class="container content">
        <div class="heading">
-        <h2>Our <strong>Great Team</strong></h2>
-        <p>Allowed Users in SQA Team</p>
+        <h2>Nuestro <strong>Gran Equipo</strong></h2>
+        <p>Usuarios permitidos para Sistema de Evoluxion</p>
     </div><!-- //end heading -->
     <div class="row">
         <div *ngFor="let item of users; let i = index"  class="hover panel" onmouseover="javascript:this.className += ' flip';" onmouseout="javascript:this.className = 'hover panel';">
@@ -19,12 +32,15 @@
               </div>
           </div>
           <div class="back">
-            <div class="backTitle">SQA Member</div>
+            <div class="backTitle">Miembro de Evoluxion</div>
             <div class="backParagraph">
               Projects
             </div>
             <div class="backGoto">
-              
+             
+        <a type="button"  (click)="addUser(item.id)">
+          <i class="glyphicon glyphicon-plus"></i>Cambiar Fotografia</a> 
+      
             </div>
           </div>
         </div>

@@ -68,13 +68,13 @@ loadTableSettings() {
       confirmCreate: true,
     },
     edit: {
-      editButtonContent: '<i class="glyphicon glyphicon-pencil"></i>',
-      saveButtonContent: '<i class="glyphicon glyphicon-ok"></i>',
-      cancelButtonContent: '<i class="glyphicon glyphicon-remove"></i>',
+      editButtonContent: '<i></i>',
+      saveButtonContent: '<i ></i>',
+      cancelButtonContent: '<i ></i>',
       confirmSave: true,
     },
     delete: {
-      deleteButtonContent: '<i class="glyphicon glyphicon-remove-sign"></i>',
+      deleteButtonContent: '<i ></i>',
       confirmDelete: true,
     },
 

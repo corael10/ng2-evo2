@@ -34,12 +34,10 @@ export class MarcasComponent implements OnInit {
   showmarca(event):void{
     this.IDmarca=0; 
     setTimeout(() => { 
-      this.IDmarca= event.nombre;
-      console.log(this.IDmarca); 
-    }, 200);
-   
-    
- 
+      console.log('eventtt ',event);
+      this.IDmarca= event.id;
+      console.log('id marca en marca component ',this.IDmarca); 
+    }, 200); 
     console.log('sdasdsadsadadsa  ',this.IDmarca);
 }
   guardar(model: Producto) {

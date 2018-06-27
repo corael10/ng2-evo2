@@ -1,5 +1,5 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
-import { User } from '../../Classes/Usr';
+import { User,Userimg } from '../../Classes/Usr';
 import { UsersServices } from '../../servicios/users.service';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 
@@ -12,6 +12,7 @@ import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 export class UserComponent implements OnInit {
 
   users: Array<User> = []; 
+  img: Array<Userimg> = []; 
   user: User = new User(0,0, '', '', '', '', '', '', '', '');
   @ViewChild('modaluser')
   modal: ModalComponent;
@@ -21,7 +22,14 @@ export class UserComponent implements OnInit {
     this.servicio.getUserList().subscribe(data => {
       this.users = data;
       console.log("datos ", this.users);
+     console.log( )
     });
+
+this.servicio.getUserimg().subscribe(data => {
+  this.img = data;
+  console.log("img ", this.img);
+});
+
   }
 
   guardar(model: User) {
