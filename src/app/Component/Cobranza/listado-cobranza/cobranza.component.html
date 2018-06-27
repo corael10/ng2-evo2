@@ -18,6 +18,9 @@
         <div class="col-md-3">
           <h4>Cobranza</h4>
         </div>
+        <div class="col-md-3">
+            <h4>Saldo Actual:<b> {{saldo | currency:'USD':true:'1.2-2'}}</b> </h4>
+          </div>
         <div class="col-md-offset-11">
           <button type="button" title="Nuevo Abono" class="btn btn-warning btn-lg" (click)="addCobranza()">
             <i class="glyphicon glyphicon-copy"></i></button> 

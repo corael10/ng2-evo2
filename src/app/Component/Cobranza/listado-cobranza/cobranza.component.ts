@@ -28,11 +28,13 @@ export class CobranzaComponent implements OnInit {
   constructor(private servicio_cob: CobranzaServices,private route: ActivatedRoute,private servicio_cli: ClientesServices) { }
 
   idCliente: number;
+  saldo : any;
   private sub: any;
   ngOnInit() {
   console.log('entra a cobranzas');
     this.sub = this.route.params.subscribe(params => {
       this.idCliente = +params['id']; // (+) converts string 'id' to a number
+      this.saldo = +params['saldo'];
       // In a real app: dispatch action to load the details here.
       
       if(Number.isNaN(this.idCliente)){

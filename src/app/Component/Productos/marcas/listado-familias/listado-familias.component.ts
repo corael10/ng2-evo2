@@ -113,6 +113,8 @@ loadTableSettings() {
         title: 'Promocion',
         type: 'string',
         filter:false,
+        editable: false,
+        addable: false,
         valuePrepareFunction: (promoactiva) => {
           if (promoactiva != null) {
             if(promoactiva == 1 )
@@ -156,6 +158,7 @@ loadTableSettings() {
   
   onCreateConfirm(event): void {
     event.newData['marca']= this.IDmarca.id;
+    event.newData['promoactiva']= 0;
     console.log('crear ', event.newData);
     this.servicio.addFamilia(event.newData).subscribe(data => {
         //this.productos.push(data);
